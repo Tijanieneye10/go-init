@@ -6,6 +6,14 @@ import (
 	"learning/files"
 )
 
+type MyError struct {
+	Msg string
+}
+
+func (m *MyError) Error() string {
+	return m.Msg
+}
+
 func parseInput(input string) (string, error) {
 	if len(input) == 0 {
 		return "", &exceptions.CustomError{Msg: "Empty input"}
