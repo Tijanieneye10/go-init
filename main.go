@@ -14,7 +14,7 @@ func (e *UserError) Error() string {
 }
 
 func main() {
-	person := users.NewAdmin("John", "Doe")
+	person := users.NewAdmin("super-admin", "Doe")
 
-	fmt.Println(person.FirstName())
+	fmt.Println(person.Role)
 }

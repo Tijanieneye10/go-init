@@ -7,7 +7,7 @@ type User struct {
 }
 
 type AdminUser struct {
-	role    string
+	Role    string
 	balance string
 	User
 }
@@ -22,7 +22,7 @@ func New(firstname, lastname, email string) *User {
 
 func NewAdmin(role, balance string) *AdminUser {
 	return &AdminUser{
-		role:    role,
+		Role:    role,
 		balance: balance,
 		User: User{
 			firstname: "John",
