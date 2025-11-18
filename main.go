@@ -16,5 +16,5 @@ func (e *UserError) Error() string {
 func main() {
 	person := users.New("John", "Doe", "johndoe@gmail.com")
 
-	fmt.Println(person)
+	fmt.Println(person.FirstName())
 }

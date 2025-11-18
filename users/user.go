@@ -13,3 +13,7 @@ func New(firstname, lastname, email string) *User {
 		email:     email,
 	}
 }
+
+func (u *User) FirstName() string {
+	return u.firstname
+}
