@@ -2,14 +2,8 @@ package main
 
 import (
 	"fmt"
+	"learning/users"
 )
-
-type User struct {
-	Firstname string
-	Lastname  string
-	State     string
-	Age       int
-}
 
 type UserError struct {
 	Msg string
@@ -19,26 +13,8 @@ func (e *UserError) Error() string {
 	return e.Msg
 }
 
-func newUser(firstname, lastname, state string, age int) (*User, error) {
-
-	if firstname == "" || lastname == "" || state == "" {
-		return nil, &UserError{Msg: "Invalid arguments"}
-	}
-
-	return &User{
-		Firstname: firstname,
-		Lastname:  lastname,
-		State:     state,
-		Age:       age,
-	}, nil
-}
-
 func main() {
-	person, err := newUser("John", "Doe", "Doe", 30)
+	person := users.New("John", "Doe", "johndoe@gmail.com")
 
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	fmt.Println(person.Lastname)
+	fmt.Println(person)
 }
