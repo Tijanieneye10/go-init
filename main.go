@@ -1,36 +1,35 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
-	"learning/users"
+	"os"
+	"strings"
 )
 
-type UserError struct {
-	Msg string
-}
-
-func (e *UserError) Error() string {
-	return e.Msg
-}
-
-type str string
-
-func (s str) log() string {
-	output := fmt.Sprintf("%s log here", s)
-	return output
+type Note struct {
+	Title       string `json:"title"`
+	Description string `json:"description"`
 }
 
 func main() {
+	title, _ := askQuestion("What is the title")
+	description, _ := askQuestion("What is the description")
 
-	var name str = "John Doe"
+	fmt.Println(title)
+	fmt.Println(description)
+}
 
-	fmt.Println(name.log())
+func askQuestion(question string) (string, error) {
+	fmt.Printf("%s?\n", question)
 
-	person := users.New("John", "Doe", "johndoe@gmail.com")
+	reader := bufio.NewReader(os.Stdin)
 
-	fmt.Println(person.FirstName())
+	readString, err := reader.ReadString('\n')
 
-	//person := users.NewAdmin("super-admin", "Doe")
-	//
-	//fmt.Println(person.Role)
+	if err != nil {
+		return "", fmt.Errorf("failed to read input: %w", err)
+	}
+
+	return strings.TrimSpace(readString), nil
 }
