@@ -13,8 +13,24 @@ func (e *UserError) Error() string {
 	return e.Msg
 }
 
-func main() {
-	person := users.NewAdmin("super-admin", "Doe")
+type str string
 
-	fmt.Println(person.Role)
+func (s str) log() string {
+	output := fmt.Sprintf("%s log here", s)
+	return output
+}
+
+func main() {
+
+	var name str = "John Doe"
+
+	fmt.Println(name.log())
+
+	person := users.New("John", "Doe", "johndoe@gmail.com")
+
+	fmt.Println(person.FirstName())
+
+	//person := users.NewAdmin("super-admin", "Doe")
+	//
+	//fmt.Println(person.Role)
 }
