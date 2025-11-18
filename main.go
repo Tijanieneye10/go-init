@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"learning/exceptions"
-	"learning/files"
 )
 
 type MyError struct {
@@ -24,12 +23,9 @@ func parseInput(input string) (string, error) {
 
 func main() {
 
-	files.WriteToFile(1110.00)
-	result, err := parseInput("")
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
+	fmt.Println("Hello World")
+	result, _ := fmt.Scan("How are you doing?")
 
 	fmt.Println(result)
+
 }
