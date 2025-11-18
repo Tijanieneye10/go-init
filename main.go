@@ -1,60 +1,25 @@
 package main
 
-import (
-	"fmt"
-	"learning/exceptions"
-)
+import "fmt"
 
-type MyError struct {
-	Msg string
+type User struct {
+	Firstname string
+	Lastname  string
+	State     string
+	Age       int
 }
 
-type Name string
-type Person struct {
-	Name string
-	Age  int
-}
-
-func (n Name) MyName() string {
-	return string(n)
-}
-
-func (p *Person) GetDetail() string {
-	return fmt.Sprintf("%s is %d years old", p.Name, p.Age)
-}
-
-func (m *MyError) Error() string {
-	return m.Msg
-}
-
-func parseInput(input string) (string, error) {
-	if len(input) == 0 {
-		return "", &exceptions.CustomError{Msg: "Empty input"}
+func newUser(firstname, lastname, state string, age int) *User {
+	return &User{
+		Firstname: firstname,
+		Lastname:  lastname,
+		State:     state,
+		Age:       age,
 	}
-
-	return input, nil
 }
 
 func main() {
+	person := newUser("John", "Doe", "Doe", 30)
 
-	fmt.Println(Name.MyName("Tijani"))
-
-	person := &Person{Name: "Usman", Age: 20}
-
-	fmt.Println(person.GetDetail())
-
-	age := 18
-	agePointer := &age
-
-	fmt.Println(getAge(agePointer))
-
-	fmt.Println("Hello World")
-	result, _ := fmt.Scan("How are you doing?")
-
-	fmt.Println(result)
-
-}
-
-func getAge(age *int) int {
-	return *age - 3
+	fmt.Println(person.Lastname)
 }
