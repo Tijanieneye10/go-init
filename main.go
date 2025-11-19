@@ -1,53 +1,27 @@
 package main
 
-import "fmt"
+import "learning/payments"
 
-type Product struct {
-	ID          int
-	name        string
-	description string
-}
-
-type StringOfString map[string]string
-
-func (s StringOfString) log () StringOfString {
-	return s
+type Paymentable interface {
+	Initialize()
+	Pay()
 }
 
 func main() {
+	paystack := payments.Paystack{Reference: 1, Amount: 100, Currency: "NGN"}
+	InitializePayment(&paystack)
+	Pay(&paystack)
 
-	names := make(StringOfString, 2)
+	flutterwave := payments.Flutterwave{Reference: 1, Amount: 100, Currency: "NGN"}
+	InitializePayment(&flutterwave)
+	Pay(&flutterwave)
 
-	names["name"] = "John"
-	names["age"] = "Doe"
-	names["email"] = "john@example.com"
-	names["address"] = "123 Main St"
+}
 
-	fmt.Println(names.log()["name"])
-	fmt.Println(len(names))
+func InitializePayment(gateway Paymentable){
+	gateway.Initialize()
+}
 
-	products := []Product{Product{
-		ID:          1,
-		name:        "Product 1",
-		description: "Description 1",
-	},
-		Product{
-			ID:          2,
-			name:        "Product 2",
-			description: "Description 2",
-		},
-	}
-
-	fmt.Println(products[0].name)
-
-	userDetails := map[string]string{
-		"name": "John Doe",
-		"age":  "30",
-		"city": "New York",
-	}
-
-	fmt.Println(userDetails["name"])
-	delete(userDetails, "age")
-	fmt.Println(userDetails["age"])
-
+func Pay(gateway Paymentable){
+	gateway.Pay()
 }
