@@ -22,4 +22,15 @@ func main() {
 	}
 
 	fmt.Println(products[0].name)
+
+	userDetails := map[string]string{
+		"name": "John Doe",
+		"age":  "30",
+		"city": "New York",
+	}
+
+	fmt.Println(userDetails["name"])
+	delete(userDetails, "age")
+	fmt.Println(userDetails["age"])
+
 }
