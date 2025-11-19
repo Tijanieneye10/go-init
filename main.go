@@ -20,6 +20,7 @@ func main() {
 	Pay(&flutterwave)
 
 	unkown(3)
+	unkown("number")
 }
 
 func InitializePayment(gateway Paymentable){
@@ -37,9 +38,9 @@ func unkown(param interface{}) {
 		fmt.Println("a is an int", aint)
 		return
 	}
-	bint, bIsInt := param.(int)
-	if bIsInt {
-		fmt.Println("b is an int", bint)
+	bstring, bIsString := param.(string)
+	if bIsString {
+		fmt.Println("b is an string", bstring)
 		return
 	}
 	fmt.Println("Unknown type")
