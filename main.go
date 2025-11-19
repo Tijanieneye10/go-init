@@ -8,10 +8,22 @@ type Product struct {
 	description string
 }
 
+type StringOfString map[string]string
+
+func (s StringOfString) log () StringOfString {
+	return s
+}
+
 func main() {
 
-	names := make(map[string]int)
+	names := make(StringOfString, 2)
 
+	names["name"] = "John"
+	names["age"] = "Doe"
+	names["email"] = "john@example.com"
+	names["address"] = "123 Main St"
+
+	fmt.Println(names.log()["name"])
 	fmt.Println(len(names))
 
 	products := []Product{Product{
