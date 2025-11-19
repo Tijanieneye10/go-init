@@ -32,7 +32,7 @@ func Pay(gateway Paymentable){
 }
 
 
-func unkown(param interface{}) {
+func unkown(param any) {
 	aint, aIsInt := param.(int)
 	if aIsInt {
 		fmt.Println("a is an int", aint)
@@ -44,4 +44,9 @@ func unkown(param interface{}) {
 		return
 	}
 	fmt.Println("Unknown type")
+}
+
+func generic[T any](param T) T {
+	fmt.Println(param)
+	return param
 }
