@@ -9,6 +9,11 @@ type Product struct {
 }
 
 func main() {
+
+	names := make(map[string]int)
+
+	fmt.Println(len(names))
+
 	products := []Product{Product{
 		ID:          1,
 		name:        "Product 1",
