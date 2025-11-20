@@ -28,6 +28,12 @@ func main() {
 
 	fmt.Println("here is the result:", result)
 
+	annonymous := functions.TransformNumber(5, func(number int) int {
+		return number * 4
+	})
+
+	fmt.Println("here is annonymous fn:", annonymous)
+
 
 	// numbers := []int{1, 2, 3, 4, 5}
 
