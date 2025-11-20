@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"learning/functions"
 	"learning/payments"
 )
 
@@ -10,24 +11,33 @@ type Paymentable interface {
 	Pay()
 }
 
-func doubleNumber(numbers *[]int) []int {
-	dNumber := []int{}
+// func doubleNumber(numbers *[]int) []int {
+// 	dNumber := []int{}
 
-	for _, num := range *numbers {
-		dNumber = append(dNumber, num*2)
-	}
+// 	for _, num := range *numbers {
+// 		dNumber = append(dNumber, num*2)
+// 	}
 
-	return dNumber
-}
+// 	return dNumber
+// }
 
 
 func main() {
 
-	numbers := []int{1, 2, 3, 4, 5}
+	result := functions.TransformNumber(4, functions.Triple)
 
-	result := doubleNumber(&numbers)
+	fmt.Println("here is the result:", result)
 
-	fmt.Println(result)
+
+
+
+
+
+	// numbers := []int{1, 2, 3, 4, 5}
+
+	// result := doubleNumber(&numbers)
+
+	// fmt.Println(result)
 
 
 
