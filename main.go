@@ -34,12 +34,9 @@ func main() {
 
 	fmt.Println("here is annonymous fn:", annonymous)
 
+	myNumbers := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
-	// numbers := []int{1, 2, 3, 4, 5}
-
-	// result := doubleNumber(&numbers)
-
-	// fmt.Println(result)
+	fmt.Println(sumNumbers(myNumbers...))
 
 
 
@@ -53,6 +50,16 @@ func main() {
 
 	unkown(3)
 	unkown("number")
+}
+
+
+func sumNumbers(numbers ...int) int {
+	sum := 0
+	for _, num := range numbers {
+		sum += num
+	}
+
+	return sum
 }
 
 func InitializePayment(gateway Paymentable){
