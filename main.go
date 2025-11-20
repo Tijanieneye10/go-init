@@ -10,7 +10,27 @@ type Paymentable interface {
 	Pay()
 }
 
+func doubleNumber(numbers *[]int) []int {
+	dNumber := []int{}
+
+	for _, num := range *numbers {
+		dNumber = append(dNumber, num*2)
+	}
+
+	return dNumber
+}
+
+
 func main() {
+
+	numbers := []int{1, 2, 3, 4, 5}
+
+	result := doubleNumber(&numbers)
+
+	fmt.Println(result)
+
+
+
 	paystack := payments.Paystack{Reference: 1, Amount: 100, Currency: "NGN"}
 	InitializePayment(&paystack)
 	Pay(&paystack)
