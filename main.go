@@ -29,10 +29,6 @@ func main() {
 	fmt.Println("here is the result:", result)
 
 
-
-
-
-
 	// numbers := []int{1, 2, 3, 4, 5}
 
 	// result := doubleNumber(&numbers)
